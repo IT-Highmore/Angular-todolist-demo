@@ -1,0 +1,32 @@
+<form [formGroup]="form">
+  <div class="form-control">
+    <label>Description:</label>
+    <input type="text" formControlName="description">
+  </div>
+  <div *ngIf="description.invalid && (description.dirty || description.touched)">
+    <div *ngIf="description.getError('required') else lengthInvalidTpl" class="form-error">Please input todo description.</div>
+    <ng-template #lengthInvalidTpl>
+      <div class="form-error">Length must less than 15 characters.</div>
+    </ng-template>
+  </div>
+
+
+  <div class="form-control">
+    <label>Category:</label>
+    <select formControlName="category">
+      <option *ngFor="let item of categories" [value]="item.id">{{item.name}}</option>
+    </select>
+  </div>
+
+  <div *ngIf="category.invalid && (category.dirty || category.touched)" class="form-error">
+    Please select a category.
+  </div>
+
+
+  <div class="form-control">
+    <label>Content:</label>
+    <textarea formControlName="content"></textarea>
+  </div>
+</form>
+
+<app-btn [text]="'Submit'" (click)="submit()" [disabled]="form.invalid"></app-btn>

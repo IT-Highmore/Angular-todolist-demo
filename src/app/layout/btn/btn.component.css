@@ -1,0 +1,14 @@
+button {
+  padding: 5px;
+  border-radius: 2px;
+  background: deepskyblue;
+  cursor: pointer;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+button:disabled {
+  background-color: rgba(100, 100, 100, .3);
+  color: black;
+  cursor: initial;
+}
